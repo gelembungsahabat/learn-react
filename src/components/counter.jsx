@@ -2,26 +2,14 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
-    count: 0,
-    tags: []
+    count: 1,
+    tags: [1, 2, 43]
   };
 
   style = {
     fontSize: 20,
     fontWeight: "bold"
   };
-
-  renderTags() {
-    if (this.state.tags.length === 0) return <p>gaada isinya</p>;
-
-    return (
-      <ul>
-        {this.state.tags.map(tag => (
-          <li key={tag}>{tag}</li>
-        ))}
-      </ul>
-    );
-  }
 
   render() {
     let classes = this.getClasses();
@@ -32,7 +20,11 @@ class Counter extends Component {
         <span style={this.style} className={classes}>
           {this.formatCode()}
         </span>
-        <button style={this.style} className="btn btn-secondary btn-sm">
+        <button
+          onClick={this.increment}
+          style={this.style}
+          className="btn btn-secondary btn-sm"
+        >
           haha
         </button>
         {/* <ul>
@@ -40,8 +32,26 @@ class Counter extends Component {
             <li>{tag}</li>
           ))}
         </ul> */}
+        <ul>{this.state.tags.length === 0 && "buat tag baru cok"}</ul>
         {this.renderTags()}
       </React.Fragment>
+    );
+  }
+
+  increment() {
+    console.log("telah di klik");
+    return <p>asoidhaoisdhoi</p>;
+  }
+
+  renderTags() {
+    if (this.state.tags.length === 0) return <p>gaada isinya</p>;
+
+    return (
+      <ul>
+        {this.state.tags.map(tag => (
+          <li key={tag}>{tag}</li>
+        ))}
+      </ul>
     );
   }
 
