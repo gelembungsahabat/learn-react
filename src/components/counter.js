@@ -17,6 +17,7 @@ class Counter extends Component {
     return (
       // <div>{this.renderTags()}</div>
       <React.Fragment>
+        {this.props.children}
         <span style={this.style} className={classes}>
           {this.formatCode()}
         </span>
