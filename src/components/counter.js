@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
-    count: 1,
+    value: this.props.value,
     tags: [1, 2, 43]
   };
 
@@ -13,7 +13,7 @@ class Counter extends Component {
 
   render() {
     let classes = this.getClasses();
-
+    console.log("props", this.props);
     return (
       // <div>{this.renderTags()}</div>
       <React.Fragment>
@@ -38,10 +38,10 @@ class Counter extends Component {
     );
   }
 
-  increment() {
+  increment = () => {
     console.log("telah di klik");
-    return <p>asoidhaoisdhoi</p>;
-  }
+    this.setState({ value: this.state.value + 1 });
+  };
 
   renderTags() {
     if (this.state.tags.length === 0) return <p>gaada isinya</p>;
@@ -57,13 +57,13 @@ class Counter extends Component {
 
   getClasses() {
     let classes = "badge m-2 badge-";
-    classes += this.state.count === 0 ? "warning" : "primary";
+    classes += this.state.value === 0 ? "warning" : "primary";
     return classes;
   }
 
   formatCode() {
-    const { count } = this.state;
-    return count === 0 ? "zero asu" : count;
+    const { value } = this.state;
+    return value === 0 ? "zero asu" : value;
   }
 }
 
