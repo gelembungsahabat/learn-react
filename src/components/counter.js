@@ -28,6 +28,12 @@ class Counter extends Component {
         >
           haha
         </button>
+        <button
+          onClick={() => this.props.onDelete(this.props.id)}
+          className="btn btn-danger btn-sm"
+        >
+          delete
+        </button>
         {/* <ul>
           {this.state.tags.map(tag => (
             <li>{tag}</li>

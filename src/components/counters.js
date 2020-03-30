@@ -10,11 +10,20 @@ export default class Counters extends React.Component {
       { id: 4, value: 0 }
     ]
   };
+
+  handleDelete = counterId => {
+    console.log("event handle called", counterId);
+  };
   render() {
     return (
       <div>
         {this.state.counters.map(counter => (
-          <Counter key={counter.id} value={counter.value}>
+          <Counter
+            key={counter.id}
+            id={counter.id}
+            onDelete={this.handleDelete}
+            value={counter.value}
+          >
             <h1>haha #{counter.id}</h1>
           </Counter>
         ))}
