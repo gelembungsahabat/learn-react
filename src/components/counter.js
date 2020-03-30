@@ -62,7 +62,7 @@ class Counter extends Component {
 
   formatCode() {
     const { value } = this.props.counter;
-    return value === 0 ? "zero asu" : value;
+    return value === 0 ? "zero" : value;
   }
 }
 

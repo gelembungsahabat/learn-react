@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "./logo.svg";
-import Navbar from "./components/navbar";
+import NavBar from "./components/navbar";
 import Counters from "./components/counters";
 
 import "./App.css";
@@ -31,10 +31,13 @@ export default class App extends React.Component {
 
   handleIncrement = counter => {
     console.log(counter);
-    const counters = [...this.state.counters];
+    var counters = [...this.state.counters];
     const index = counters.indexOf(counter);
     counters[index] = { ...counter };
-    counters[index].value++;
+    counters = this.state.counters.map(c => {
+      c.value = c.value * 1600;
+      return c;
+    });
     this.setState({ counters });
   };
 
@@ -42,7 +45,7 @@ export default class App extends React.Component {
     return (
       <div className="App">
         <h1>hahaha</h1>
-        <Navbar
+        <NavBar
           totalCounters={this.state.counters.filter(c => c.value > 0).length}
         />
         <Counters
