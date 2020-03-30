@@ -1,11 +1,6 @@
 import React, { Component } from "react";
 
 class Counter extends Component {
-  state = {
-    value: this.props.value,
-    tags: [1, 2, 43]
-  };
-
   style = {
     fontSize: 20,
     fontWeight: "bold"
@@ -22,40 +17,37 @@ class Counter extends Component {
           {this.formatCode()}
         </span>
         <button
-          onClick={this.increment}
+          onClick={() => this.props.onIncrement(this.props.counter)}
           style={this.style}
           className="btn btn-secondary btn-sm"
         >
           haha
         </button>
         <button
-          onClick={() => this.props.onDelete(this.props.id)}
+          onClick={() => this.props.onDelete(this.props.counter.id)}
           className="btn btn-danger btn-sm"
+          style={this.style}
         >
           delete
         </button>
+
         {/* <ul>
           {this.state.tags.map(tag => (
             <li>{tag}</li>
           ))}
         </ul> */}
-        <ul>{this.state.tags.length === 0 && "buat tag baru cok"}</ul>
-        {this.renderTags()}
+        {/* <ul>{this.state.tags.length === 0 && "buat tag baru cok"}</ul>
+        {this.renderTags()} */}
       </React.Fragment>
     );
   }
 
-  increment = () => {
-    console.log("telah di klik");
-    this.setState({ value: this.state.value + 1 });
-  };
-
   renderTags() {
-    if (this.state.tags.length === 0) return <p>gaada isinya</p>;
+    if (this.props.counter.tags.length === 0) return <p>gaada isinya</p>;
 
     return (
       <ul>
-        {this.state.tags.map(tag => (
+        {this.props.counter.tags.map(tag => (
           <li key={tag}>{tag}</li>
         ))}
       </ul>
@@ -64,12 +56,12 @@ class Counter extends Component {
 
   getClasses() {
     let classes = "badge m-2 badge-";
-    classes += this.state.value === 0 ? "warning" : "primary";
+    classes += this.props.counter.value === 0 ? "warning" : "primary";
     return classes;
   }
 
   formatCode() {
-    const { value } = this.state;
+    const { value } = this.props.counter;
     return value === 0 ? "zero asu" : value;
   }
 }
