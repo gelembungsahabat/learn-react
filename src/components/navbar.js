@@ -1,11 +1,8 @@
 import React from "react";
+import { render } from "@testing-library/react";
 
-const NavBar = ({ totalCounters }) => {
-  return (
-    <div>
-      <h1>{totalCounters}</h1>
-    </div>
-  );
-};
+function TodoList({ totalCounters }) {
+  return totalCounters.map(data => <h1>{data.value}</h1>);
+}
 
-export default NavBar;
+export default TodoList;

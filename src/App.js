@@ -7,12 +7,7 @@ import "./App.css";
 
 export default class App extends React.Component {
   state = {
-    counters: [
-      { id: 1, value: 4 },
-      { id: 2, value: 0 },
-      { id: 3, value: 2 },
-      { id: 4, value: 0 }
-    ]
+    counters: [{ id: 1, value: 4 }]
   };
 
   handleDelete = counterId => {
@@ -34,20 +29,20 @@ export default class App extends React.Component {
     var counters = [...this.state.counters];
     const index = counters.indexOf(counter);
     counters[index] = { ...counter };
-    counters = this.state.counters.map(c => {
-      c.value = c.value * 1600;
-      return c;
-    });
+    counters[index].value++;
     this.setState({ counters });
   };
+
+  // passingData = data => {
+  //   console.log(data);
+  //   var datas = [...this.state.counters];
+  // };
 
   render() {
     return (
       <div className="App">
         <h1>hahaha</h1>
-        <NavBar
-          totalCounters={this.state.counters.filter(c => c.value > 0).length}
-        />
+        <NavBar totalCounters={this.state.counters} />
         <Counters
           counters={this.state.counters}
           onDelete={this.handleDelete}
