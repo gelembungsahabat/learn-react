@@ -7,7 +7,12 @@ import "./App.css";
 
 export default class App extends React.Component {
   state = {
-    counters: [{ id: 1, value: 4 }]
+    counters: [
+      { id: 1, value: 4 },
+      { id: 2, value: 4 },
+      { id: 3, value: 4 },
+      { id: 4, value: 4 }
+    ]
   };
 
   handleDelete = counterId => {
@@ -18,7 +23,7 @@ export default class App extends React.Component {
 
   handleReset = () => {
     const counters = this.state.counters.map(c => {
-      c.value = 0;
+      c.value = c.value * 3;
       return c;
     });
     this.setState({ counters });
